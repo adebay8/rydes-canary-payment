@@ -1,0 +1,18 @@
+type Customer {
+    id: ID!
+    uuid: ID!
+    user_id: String!
+    integration: String!
+    customer_code: String!
+    customer_id: Int!
+    wallet_balance: Float!
+    payable: Float!
+    blocked: Float!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+extend type Query {
+    customer(id: ID @eq): Customer @find
+    customers: [Customer!]! @paginate(defaultCount: 10)
+}
